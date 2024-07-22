@@ -37,7 +37,7 @@ app.get("/todos",async (req,res)=>{
     const todos = await todo.find({})
     console.log(todos)
 
-    res.json({
+    res.status(200).json({
         success:true,
         msg:"Todos fetched",
         todos
@@ -56,7 +56,7 @@ app.put("/completed",async (req,res)=>{
         })
     }  
 
-    await todo.update({
+    await todo.updateOne({
         _id:req.body.id,
     },{
         completed:true
